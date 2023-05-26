@@ -1,4 +1,4 @@
-import 'KonaneUtils.dart';
+import 'src/board_utils.dart';
 
 class BoardModel {
   late Map<Coordinates, SpaceState> spaces;

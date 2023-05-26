@@ -1,5 +1,5 @@
-import 'BoardController.dart';
-import 'BoardModel.dart';
+import 'board_controller.dart';
+import 'board_model.dart';
 
 class BoardView {
   late BoardModel _boardModel;

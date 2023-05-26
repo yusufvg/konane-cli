@@ -1,5 +1,5 @@
-import 'BoardModel.dart';
-import 'KonaneUtils.dart';
+import 'board_model.dart';
+import 'src/board_utils.dart';
 
 class BoardController {
   BoardModel _boardModel;
