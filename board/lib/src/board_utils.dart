@@ -1,61 +1,72 @@
 class Space {
-  late Coordinates coordinates;
+  late Coordinates _coordinates;
   SpaceState state;
 
-  Space(this.coordinates, this.state);
+  Space(this._coordinates, this.state);
 
   Space.rawCoords(int row, int col, this.state) {
-    this.coordinates = new Coordinates(row, col);
+    _coordinates = Coordinates(row, col);
+  }
+
+  Coordinates get coordinates {
+    return Coordinates.copy(_coordinates);
   }
 
   @override
   bool operator ==(Object other) =>
       other is Space &&
-      other.state == this.state &&
-      other.coordinates == this.coordinates;
+      other.state == state &&
+      other.coordinates == coordinates;
 
   @override
   int get hashCode => state.hashCode + coordinates.hashCode;
 }
 
 enum SpaceState {
-  Empty,
-  Black,
-  White,
+  empty,
+  black,
+  white,
 }
 
 enum Direction {
-  Up,
-  Down,
-  Left,
-  Right,
+  up,
+  down,
+  left,
+  right,
 }
 
 class Coordinates {
-  int row;
-  int col;
+  late int row;
+  late int col;
 
   Coordinates(this.row, this.col);
 
+  Coordinates.copy(Coordinates other) {
+    row = other.row;
+    col = other.col;
+  }
+
   @override
   bool operator ==(Object other) =>
-      other is Coordinates && other.row == this.row && other.col == this.col;
+      other is Coordinates && other.row == row && other.col == col;
 
   @override
   int get hashCode => row.hashCode + col.hashCode;
 
   Coordinates translate(Direction dir, int val) {
+    Coordinates dest = Coordinates.copy(this);
+
     switch (dir) {
-      case Direction.Up:
-        row -= val;
-      case Direction.Down:
-        row += val;
-      case Direction.Left:
-        col -= val;
-      case Direction.Right:
-        col += val;
+      case Direction.up:
+        dest.row -= val;
+      case Direction.down:
+        dest.row += val;
+      case Direction.left:
+        dest.col -= val;
+      case Direction.right:
+        dest.col += val;
     }
 
-    return this;
+    return dest;
   }
 }
