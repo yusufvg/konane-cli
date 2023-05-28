@@ -1,3 +1,5 @@
+// Util Classes.
+
 class Space {
   late Coordinates _coordinates;
   SpaceState state;
@@ -69,4 +71,14 @@ class Coordinates {
 
     return dest;
   }
+}
+
+// Helpers.
+
+SpaceState getOpponent(SpaceState player) {
+  if (player == SpaceState.empty) {
+    throw ArgumentError('player cannot be empty');
+  }
+
+  return player == SpaceState.black ? SpaceState.white : SpaceState.black;
 }

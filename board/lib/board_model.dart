@@ -19,9 +19,9 @@ class BoardModel {
 
     spaces = {};
     pieces = {SpaceState.black: [], SpaceState.white: []};
-    SpaceState nextState = SpaceState.black;
 
     for (int r = 0; r < size; r++) {
+      SpaceState nextState = r % 2 == 0 ? SpaceState.black : SpaceState.white;
       for (int c = 0; c < size; c++) {
         Coordinates coords = Coordinates(r, c);
         spaces[coords] = nextState;
@@ -31,6 +31,8 @@ class BoardModel {
       }
     }
   }
+
+  int get size => _size;
 
   /// Retrieves the [SpaceState] at the given [Coordinates].
   ///
