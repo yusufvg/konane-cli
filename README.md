@@ -1,4 +1,4 @@
-# konane-js
+# konane
 
 // papamū
 
